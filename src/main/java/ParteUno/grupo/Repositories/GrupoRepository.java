@@ -1,6 +1,6 @@
-package ParteUno.Grupo.Repositories;
+package ParteUno.grupo.Repositories;
 
-import ParteUno.Grupo.Entity.Grupo;
+import ParteUno.grupo.Entity.Grupo;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

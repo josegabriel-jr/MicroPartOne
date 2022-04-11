@@ -1,14 +1,17 @@
-package ParteUno.Grupo.Model;
-
+package ParteUno.grupo.model;
 import java.sql.Date;
 
 public class GrupoModel {
-
     private int id;
+
     private String nombre;
+
     private int canIntegrantes;
+
     private Date fechaConformacion;
+
     private int Semillero;
+
     private int Departamento;
 
     public GrupoModel() {
@@ -73,7 +76,7 @@ public class GrupoModel {
 
     @Override
     public String toString() {
-        return "grupo{" +
+        return "GrupoModel{" +
                 "id=" + id +
                 ", nombre='" + nombre + '\'' +
                 ", canIntegrantes=" + canIntegrantes +
@@ -82,5 +85,4 @@ public class GrupoModel {
                 ", Departamento=" + Departamento +
                 '}';
     }
-    
 }

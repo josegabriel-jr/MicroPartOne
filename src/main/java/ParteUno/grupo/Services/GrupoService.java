@@ -1,11 +1,9 @@
-package ParteUno.Grupo.Services;
+package ParteUno.grupo.Services;
 
-import ParteUno.Grupo.Entity.Grupo;
-import ParteUno.Grupo.Repositories.GrupoRepository;
+import ParteUno.grupo.Entity.Grupo;
+import ParteUno.grupo.Repositories.GrupoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.ArrayList;
 

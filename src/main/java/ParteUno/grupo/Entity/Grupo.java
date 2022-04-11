@@ -1,4 +1,4 @@
-package ParteUno.Grupo.Entity;
+package ParteUno.grupo.Entity;
 
 import javax.persistence.*;
 import java.sql.Date;
