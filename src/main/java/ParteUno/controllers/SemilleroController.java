@@ -20,7 +20,7 @@ public class SemilleroController {
     @Autowired
     SemilleroConverter semilleroConverter;
 
-    @GetMapping()
+    @GetMapping("/listSemillero")
     public ArrayList<SemilleroModel> listSemillero(){
         ArrayList<SemilleroModel> semilleroModels = new ArrayList<>();
         try {
@@ -32,8 +32,26 @@ public class SemilleroController {
         return semilleroModels ;
     }
 
-    @PostMapping()
+    @PostMapping("/guardarSemillero")
     public Semillero saveSemillero(@RequestBody SemilleroModel info) {
         return semilleroServices.setSemillero(semilleroConverter.modelToEntity(info));
     }
+
+    @GetMapping("/getSemillero/{id}")
+    public SemilleroModel semilleroID(@PathVariable("id") Integer id){
+    return  semilleroConverter.entityToModel(semilleroServices.searchSemillero(id));
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public boolean deleteSemillero(@PathVariable("id") Integer id){
+        return semilleroServices.deleteSemillero(id);
+    }
+
+
+    @PutMapping("/update/{id}")
+    public SemilleroModel updateSemillero(@RequestBody SemilleroModel info,@PathVariable int id){
+    return semilleroConverter.entityToModel(semilleroServices.updateSemillero(semilleroConverter.modelToEntity(info),id));
+    }
+
+
 }

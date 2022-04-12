@@ -19,7 +19,7 @@ public class GrupoController {
     @Autowired
     GrupoConverter grupoConverter;
 
-    @GetMapping()
+    @GetMapping("/listGrupo")
     public ArrayList<GrupoModel> listGrupo(){
         ArrayList<GrupoModel> grupoModels = new ArrayList<>();
         try {
@@ -31,10 +31,23 @@ public class GrupoController {
         return grupoModels ;
     }
 
-    @PostMapping()
-    public Grupo saveGrupo(@RequestBody  GrupoModel info) {
-        return grupoService.setGrupo(grupoConverter.modelToEntity(info));
+    @PostMapping("/guardarGrupo")
+    public GrupoModel saveGrupo(@RequestBody  GrupoModel info) {
+        return grupoConverter.entityToModel(grupoService.setGrupo(grupoConverter.modelToEntity(info)));
     }
 
+    @GetMapping("/getGrupo/{id}")
+    public GrupoModel getGrupo(@PathVariable int id){
+        return grupoConverter.entityToModel(grupoService.getGrupo(id));
+    }
 
+    @DeleteMapping("/delete/{id}")
+    public Boolean deleteGrupo(@PathVariable int id){
+        return grupoService.deleteGrupo(id);
+    }
+
+    @PutMapping("/update/{id}")
+    public GrupoModel updateGrupo(@RequestBody GrupoModel info, @PathVariable int id){
+        return grupoConverter.entityToModel(grupoService.updateGrupo(grupoConverter.modelToEntity(info),id));
+    }
 }

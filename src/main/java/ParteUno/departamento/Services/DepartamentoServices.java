@@ -20,4 +20,25 @@ public class DepartamentoServices {
     public Departamento setDepartamento(Departamento info){
         return departamentoRepositories.save(info);
     }
+
+    public Departamento getDepartamento(int id){
+        return departamentoRepositories.findById(id).get();
+    }
+
+    public Boolean deleteDepartamento(int id){
+        boolean isDelete= false;
+        try{
+            departamentoRepositories.deleteById(id);
+            isDelete= true;
+        }catch (Exception e){
+
+        }
+        return  isDelete;
+    }
+
+    public Departamento updateDepartamento(Departamento info, int id){
+        Departamento departamento= departamentoRepositories.findById(id).get();
+        departamento.setName(info.getName());
+        return departamentoRepositories.save(departamento);
+    }
 }

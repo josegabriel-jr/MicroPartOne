@@ -18,7 +18,7 @@ public class DepartamentoController {
     @Autowired
     DepartamentoConverter departamentoConverter;
 
-    @GetMapping
+    @GetMapping("/listDepartamento")
     public ArrayList<DepartamentoModel> listDepartamento(){
         ArrayList<DepartamentoModel> departamentoModel = new ArrayList<DepartamentoModel>();
         try{
@@ -31,9 +31,25 @@ public class DepartamentoController {
         return departamentoModel;
     }
 
-    @PostMapping
+    @PostMapping("/GuardarDepartamento")
     public Departamento setDepartamento(@RequestBody DepartamentoModel info){
         return departamentoServices.setDepartamento(departamentoConverter.modelToEntity(info));
+    }
+
+    @GetMapping("/getDepartamento/{id}")
+    public DepartamentoModel getDepartamento(@PathVariable int id){
+
+        return departamentoConverter.entityToModel(departamentoServices.getDepartamento(id));
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public Boolean deleteDepartamento(@PathVariable int id){
+        return departamentoServices.deleteDepartamento(id);
+    }
+
+    @PutMapping("/update/{id}")
+    public DepartamentoModel updateDepartamento(@RequestBody DepartamentoModel info, @PathVariable int id){
+    return departamentoConverter.entityToModel(departamentoServices.updateDepartamento(departamentoConverter.modelToEntity(info),id));
     }
 
 }
