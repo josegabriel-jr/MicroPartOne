@@ -1,4 +1,7 @@
 package ParteUno.grupo.model;
+import ParteUno.departamento.model.DepartamentoModel;
+import ParteUno.semillero.model.SemilleroModel;
+
 import java.sql.Date;
 
 public class GrupoModel {
@@ -10,14 +13,14 @@ public class GrupoModel {
 
     private Date fechaConformacion;
 
-    private int Semillero;
+    private SemilleroModel Semillero;
 
-    private int Departamento;
+    private DepartamentoModel Departamento;
 
     public GrupoModel() {
     }
 
-    public GrupoModel(int id, String nombre, int canIntegrantes, Date fechaConformacion, int semillero, int departamento) {
+    public GrupoModel(int id, String nombre, int canIntegrantes, Date fechaConformacion, SemilleroModel semillero, DepartamentoModel departamento) {
         this.id = id;
         this.nombre = nombre;
         this.canIntegrantes = canIntegrantes;
@@ -58,19 +61,19 @@ public class GrupoModel {
         this.fechaConformacion = fechaConformacion;
     }
 
-    public int getSemillero() {
+    public SemilleroModel getSemillero() {
         return Semillero;
     }
 
-    public void setSemillero(int semillero) {
+    public void setSemillero(SemilleroModel semillero) {
         Semillero = semillero;
     }
 
-    public int getDepartamento() {
+    public DepartamentoModel getDepartamento() {
         return Departamento;
     }
 
-    public void setDepartamento(int departamento) {
+    public void setDepartamento(DepartamentoModel departamento) {
         Departamento = departamento;
     }
 
