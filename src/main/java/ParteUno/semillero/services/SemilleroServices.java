@@ -1,7 +1,11 @@
 package ParteUno.semillero.services;
 
+import ParteUno.grupo.Entity.Grupo;
+import ParteUno.grupo.model.GrupoModel;
 import ParteUno.semillero.Entity.Semillero;
 import ParteUno.semillero.Repositories.SemilleroRepositories;
+import ParteUno.semillero.converter.SemilleroConverter;
+import ParteUno.semillero.model.SemilleroModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +16,8 @@ import java.util.Optional;
 public class SemilleroServices {
     @Autowired
     SemilleroRepositories semilleroRepositories;
-
+    @Autowired
+    SemilleroConverter semilleroConverter;
 
     public ArrayList<Semillero> listSemillero() {
         return (ArrayList<Semillero>) semilleroRepositories.findAll();
@@ -46,5 +51,19 @@ public class SemilleroServices {
         semillero.setFechaConformacion(info.getFechaConformacion());
         return semilleroRepositories.save(semillero);
     }
+
+    public Boolean GuardarDatosS(SemilleroModel[] info){
+        boolean isSave=false;
+        try {
+            Semillero tmp= new Semillero();
+            for (int i = 0; i < info.length; i++) {
+                tmp= semilleroConverter.modelToEntity(info[i]);
+                semilleroRepositories.save(tmp);
+            }
+            isSave=true;
+        }catch (Exception e){}
+        return isSave;
+    }
+
 
 }

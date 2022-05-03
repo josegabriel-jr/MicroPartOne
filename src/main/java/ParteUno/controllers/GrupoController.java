@@ -72,4 +72,9 @@ public class GrupoController {
         return grupoConverter.entityToModel(grupoService.updateGrupo(grupoConverter.modelToEntity(info),id),semilleroConverter.entityToModel(semilleroServices.searchSemillero(tmp.getSemillero())),departamentoConverter.entityToModel(departamentoServices.getDepartamento(tmp.getId())));
     }
 
+    @PostMapping("/infos")
+    public Boolean GuardarInfoS(@RequestBody GrupoModel[] infos){
+    return grupoService.GuardarDatos(infos);
+    }
+
 }

@@ -2,6 +2,8 @@ package ParteUno.grupo.Services;
 
 import ParteUno.grupo.Entity.Grupo;
 import ParteUno.grupo.Repositories.GrupoRepository;
+import ParteUno.grupo.converter.GrupoConverter;
+import ParteUno.grupo.model.GrupoModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +14,8 @@ public class GrupoService {
     @Autowired
     GrupoRepository grupoRepository;
 
+    @Autowired
+    GrupoConverter grupoConverter;
 
     public ArrayList<Grupo>  listGrupo(){
         return (ArrayList<Grupo>) grupoRepository.findAll();
@@ -44,6 +48,20 @@ public class GrupoService {
         grupo.setSemillero(info.getSemillero());
         grupo.setDepartamento(info.getDepartamento());
         return grupoRepository.save(grupo);
+    }
+
+
+    public Boolean GuardarDatos(GrupoModel [] info){
+        boolean isSave=false;
+        try {
+            Grupo tmp= new Grupo();
+            for (int i = 0; i < info.length; i++) {
+                tmp= grupoConverter.modelToEntity(info[i]);
+                grupoRepository.save(tmp);
+            }
+            isSave=true;
+        }catch (Exception e){}
+        return isSave;
     }
 
 }

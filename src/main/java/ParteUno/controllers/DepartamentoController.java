@@ -52,4 +52,9 @@ public class DepartamentoController {
     return departamentoConverter.entityToModel(departamentoServices.updateDepartamento(departamentoConverter.modelToEntity(info),id));
     }
 
+    @PostMapping("/infos")
+    public Boolean guardarDatosD(@RequestBody DepartamentoModel []  info){
+        return departamentoServices.GuardarDatosS(info);
+    }
+
 }

@@ -1,7 +1,5 @@
 package ParteUno.controllers;
-
 import ParteUno.semillero.Entity.Semillero;
-
 import ParteUno.semillero.converter.SemilleroConverter;
 import ParteUno.semillero.model.SemilleroModel;
 import ParteUno.semillero.services.SemilleroServices;
@@ -51,6 +49,11 @@ public class SemilleroController {
     @PutMapping("/update/{id}")
     public SemilleroModel updateSemillero(@RequestBody SemilleroModel info,@PathVariable int id){
     return semilleroConverter.entityToModel(semilleroServices.updateSemillero(semilleroConverter.modelToEntity(info),id));
+    }
+
+    @PostMapping("/infos")
+    public Boolean GuardarDatosG(@RequestBody SemilleroModel[] info){
+    return semilleroServices.GuardarDatosS(info);
     }
 
 
