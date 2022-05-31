@@ -43,6 +43,8 @@ public class GrupoService {
     public Grupo updateGrupo(Grupo info, int id){
         Grupo grupo = grupoRepository.findById(id).get();
         grupo.setNombre(info.getNombre());
+        grupo.setDirector(info.getDirector());
+        grupo.setLineaInvestigacion(info.getLineaInvestigacion());
         grupo.setCanIntegrantes(info.getCanIntegrantes());
         grupo.setFechaConformacion(info.getFechaConformacion());
         grupo.setSemillero(info.getSemillero());

@@ -46,8 +46,10 @@ public class SemilleroServices {
 
     public Semillero updateSemillero(Semillero info, int id){
         Semillero semillero = semilleroRepositories.findById(id).get();
+        semillero.setSigla(info.getSigla());
         semillero.setNombre(info.getNombre());
         semillero.setCanGrupos(info.getCanGrupos());
+        semillero.setCantidad_estudiantes(info.getCantidad_estudiantes());
         semillero.setFechaConformacion(info.getFechaConformacion());
         return semilleroRepositories.save(semillero);
     }

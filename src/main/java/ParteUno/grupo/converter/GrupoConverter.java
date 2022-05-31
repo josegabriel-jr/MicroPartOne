@@ -16,6 +16,8 @@ public GrupoModel entityToModel(Grupo infoG, SemilleroModel infoS, DepartamentoM
     if(infoG!=null && infoS!= null && infoD!=null){
         grupoModel.setId(infoG.getId());
         grupoModel.setNombre(infoG.getNombre());
+        grupoModel.setDirector(infoG.getDirector());
+        grupoModel.setLineaInvestigacion(infoG.getLineaInvestigacion());
         grupoModel.setCanIntegrantes(infoG.getCanIntegrantes());
         grupoModel.setFechaConformacion(infoG.getFechaConformacion());
         grupoModel.setSemillero(infoS);
@@ -31,6 +33,8 @@ public Grupo modelToEntity(GrupoModel info){
     if (info!=null){
         grupo.setId(info.getId());
         grupo.setNombre(info.getNombre());
+        grupo.setDirector(info.getDirector());
+        grupo.setLineaInvestigacion(info.getLineaInvestigacion());
         grupo.setCanIntegrantes(info.getCanIntegrantes());
         grupo.setFechaConformacion(info.getFechaConformacion());
         grupo.setSemillero(info.getSemillero().getId());

@@ -14,6 +14,12 @@ public class Grupo {
     @Column(name = "nombre")
     private String nombre;
 
+    @Column(name = "director")
+    private String director;
+
+    @Column(name = "lineainvestigacion")
+    private String lineaInvestigacion;
+
     @Column (name = "cantidad_integrantes")
     private int canIntegrantes;
 
@@ -26,13 +32,14 @@ public class Grupo {
     @Column(name = "id_departamento")
     private int Departamento;
 
-
     public Grupo() {
     }
 
-    public Grupo(int id, String nombre, int canIntegrantes, Date fechaConformacion, int semillero, int departamento) {
+    public Grupo(int id, String nombre, String director, String lineaInvestigacion, int canIntegrantes, Date fechaConformacion, int semillero, int departamento) {
         this.id = id;
         this.nombre = nombre;
+        this.director = director;
+        this.lineaInvestigacion = lineaInvestigacion;
         this.canIntegrantes = canIntegrantes;
         this.fechaConformacion = fechaConformacion;
         Semillero = semillero;
@@ -53,6 +60,22 @@ public class Grupo {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getDirector() {
+        return director;
+    }
+
+    public void setDirector(String director) {
+        this.director = director;
+    }
+
+    public String getLineaInvestigacion() {
+        return lineaInvestigacion;
+    }
+
+    public void setLineaInvestigacion(String lineaInvestigacion) {
+        this.lineaInvestigacion = lineaInvestigacion;
     }
 
     public int getCanIntegrantes() {
@@ -85,17 +108,5 @@ public class Grupo {
 
     public void setDepartamento(int departamento) {
         Departamento = departamento;
-    }
-
-    @Override
-    public String toString() {
-        return "Grupo{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", canIntegrantes=" + canIntegrantes +
-                ", fechaConformacion=" + fechaConformacion +
-                ", Semillero=" + Semillero +
-                ", Departamento=" + Departamento +
-                '}';
     }
 }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/semillero")
@@ -51,10 +52,17 @@ public class SemilleroController {
     return semilleroConverter.entityToModel(semilleroServices.updateSemillero(semilleroConverter.modelToEntity(info),id));
     }
 
-    @PostMapping("/infos")
-    public Boolean GuardarDatosG(@RequestBody SemilleroModel[] info){
-    return semilleroServices.GuardarDatosS(info);
+/*
+    @PostMapping("/{infos}")
+    public ArrayList<String> GuardarDatosS(@PathVariable("infos") ArrayList<SemilleroModel> datos){
+        boolean isSave=false;
+        try {
+            for(SemilleroModel tmp : datos) {
+                semilleroServices.setSemillero(semilleroConverter.modelToEntity(tmp));
+            }
+            isSave=true;
+        }catch (Exception e){}
+        return isSave;
     }
-
-
+*/
 }

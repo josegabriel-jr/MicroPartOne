@@ -9,6 +9,10 @@ public class GrupoModel {
 
     private String nombre;
 
+    private String director;
+
+    private String lineaInvestigacion;
+
     private int canIntegrantes;
 
     private Date fechaConformacion;
@@ -77,11 +81,29 @@ public class GrupoModel {
         Departamento = departamento;
     }
 
+    public String getDirector() {
+        return director;
+    }
+
+    public void setDirector(String director) {
+        this.director = director;
+    }
+
+    public String getLineaInvestigacion() {
+        return lineaInvestigacion;
+    }
+
+    public void setLineaInvestigacion(String lineaInvestigacion) {
+        this.lineaInvestigacion = lineaInvestigacion;
+    }
+
     @Override
     public String toString() {
         return "GrupoModel{" +
                 "id=" + id +
                 ", nombre='" + nombre + '\'' +
+                ", director='" + director + '\'' +
+                ", lineaInvestigacion='" + lineaInvestigacion + '\'' +
                 ", canIntegrantes=" + canIntegrantes +
                 ", fechaConformacion=" + fechaConformacion +
                 ", Semillero=" + Semillero +

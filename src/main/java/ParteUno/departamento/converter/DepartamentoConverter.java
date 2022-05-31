@@ -12,6 +12,7 @@ public class DepartamentoConverter {
         if(info!= null){
             departamentoModel.setId(info.getId());
             departamentoModel.setName(info.getName());
+            departamentoModel.setProgAcademico(info.getProgAcademico());
         }
         return departamentoModel;
     }
@@ -22,6 +23,7 @@ public class DepartamentoConverter {
         if (info != null) {
             departamento.setId(info.getId());
             departamento.setName(info.getName());
+            departamento.setProgAcademico(info.getProgAcademico());
         }
         return departamento;
     }

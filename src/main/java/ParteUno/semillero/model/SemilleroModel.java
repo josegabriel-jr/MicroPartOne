@@ -5,8 +5,10 @@ import java.sql.Date;
 public class SemilleroModel {
 
     private int id;
+    private String sigla;
     private String nombre;
     private int canGrupos;
+    private int canEstudiantes;
     private Date fechaConformacion;
 
 
@@ -19,6 +21,22 @@ public class SemilleroModel {
         this.nombre = nombre;
         this.canGrupos = canGrupos;
         this.fechaConformacion = fechaConformacion;
+    }
+
+    public String getSigla() {
+        return sigla;
+    }
+
+    public void setSigla(String sigla) {
+        this.sigla = sigla;
+    }
+
+    public int getCanEstudiantes() {
+        return canEstudiantes;
+    }
+
+    public void setCanEstudiantes(int canEstudiantes) {
+        this.canEstudiantes = canEstudiantes;
     }
 
     public int getId() {
@@ -57,8 +75,10 @@ public class SemilleroModel {
     public String toString() {
         return "SemilleroModel{" +
                 "id=" + id +
+                ", sigla='" + sigla + '\'' +
                 ", nombre='" + nombre + '\'' +
                 ", canGrupos=" + canGrupos +
+                ", canEstudiantes=" + canEstudiantes +
                 ", fechaConformacion=" + fechaConformacion +
                 '}';
     }

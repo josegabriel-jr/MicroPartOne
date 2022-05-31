@@ -14,12 +14,17 @@ public class Departamento {
     @Column(name = "nombre")
     private String name;
 
+
+    @Column(name = "programaacademico")
+    private int progAcademico;
+
     public Departamento() {
     }
 
-    public Departamento(int id, String name) {
+    public Departamento(int id, String name, int progAcademico) {
         this.id = id;
         this.name = name;
+        this.progAcademico = progAcademico;
     }
 
     public int getId() {
@@ -38,11 +43,20 @@ public class Departamento {
         this.name = name;
     }
 
+    public int getProgAcademico() {
+        return progAcademico;
+    }
+
+    public void setProgAcademico(int progAcademico) {
+        this.progAcademico = progAcademico;
+    }
+
     @Override
     public String toString() {
-        return "Deparatamento{" +
+        return "Departamento{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", progAcademico=" + progAcademico +
                 '}';
     }
 }

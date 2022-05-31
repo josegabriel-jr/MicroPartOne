@@ -4,13 +4,15 @@ package ParteUno.departamento.model;
 public class DepartamentoModel {
     private int id;
     private String name;
+    private int progAcademico;
 
     public DepartamentoModel() {
     }
 
-    public DepartamentoModel(int id, String name) {
+    public DepartamentoModel(int id, String name, int progAcademico) {
         this.id = id;
         this.name = name;
+        this.progAcademico = progAcademico;
     }
 
     public int getId() {
@@ -29,5 +31,11 @@ public class DepartamentoModel {
         this.name = name;
     }
 
+    public int getProgAcademico() {
+        return progAcademico;
+    }
 
+    public void setProgAcademico(int progAcademico) {
+        this.progAcademico = progAcademico;
+    }
 }

@@ -51,7 +51,7 @@ public class GrupoController {
 
     @PostMapping("/guardarGrupo")
     public GrupoModel saveGrupo(@RequestBody  GrupoModel info) {
-        Grupo tmp= new Grupo(info.getId(), info.getNombre(),info.getCanIntegrantes(),info.getFechaConformacion(),info.getSemillero().getId(),info.getDepartamento().getId());
+        Grupo tmp= new Grupo(info.getId(), info.getNombre(), info.getDirector(),info.getLineaInvestigacion(),info.getCanIntegrantes(),info.getFechaConformacion(),info.getSemillero().getId(),info.getDepartamento().getId());
         return grupoConverter.entityToModel(grupoService.setGrupo(tmp),semilleroConverter.entityToModel(semilleroServices.searchSemillero(tmp.getSemillero())),departamentoConverter.entityToModel(departamentoServices.getDepartamento(tmp.getDepartamento())));
     }
 
@@ -68,7 +68,7 @@ public class GrupoController {
 
     @PutMapping("/update/{id}")
     public GrupoModel updateGrupo(@RequestBody GrupoModel info, @PathVariable int id){
-    Grupo tmp= new Grupo(info.getId(), info.getNombre(), info.getCanIntegrantes(), info.getFechaConformacion(),info.getSemillero().getId(),info.getDepartamento().getId());
+    Grupo tmp= new Grupo(info.getId(), info.getNombre(),info.getDirector(),info.getLineaInvestigacion(), info.getCanIntegrantes(), info.getFechaConformacion(),info.getSemillero().getId(),info.getDepartamento().getId());
         return grupoConverter.entityToModel(grupoService.updateGrupo(grupoConverter.modelToEntity(info),id),semilleroConverter.entityToModel(semilleroServices.searchSemillero(tmp.getSemillero())),departamentoConverter.entityToModel(departamentoServices.getDepartamento(tmp.getId())));
     }
 

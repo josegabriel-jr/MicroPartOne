@@ -13,7 +13,6 @@ public class ParteUnoApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ParteUnoApplication.class, args);
 	}
-
 	@Bean
 	public WebMvcConfigurer corsConfigurer() {
 		return new WebMvcConfigurer() {
@@ -23,4 +22,5 @@ public class ParteUnoApplication {
 			}
 		};
 	}
+
 }
