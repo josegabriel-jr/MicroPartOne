@@ -45,7 +45,7 @@ public class GrupoController {
         ArrayList<GrupoModel> grupoModels = new ArrayList<>();
         try {
             for (Grupo list:grupoService.listGrupo()){
-                grupoModels.add(grupoConverter.entityToModel(list,semilleroConverter.entityToModel(semilleroServices.searchSemillero(list.getSemillero())),departamentoConverter.entityToModel(departamentoServices.getDepartamento(list.getDepartamento()))));
+                grupoModels.add(grupoConverter.entityToModel(list,departamentoConverter.entityToModel(departamentoServices.getDepartamento(list.getDepartamento()))));
             }
         }catch (Exception e){
         }
@@ -54,14 +54,14 @@ public class GrupoController {
 
     @PostMapping("/guardarGrupo")
     public GrupoModel saveGrupo(@RequestBody  GrupoModel info) {
-        Grupo tmp= new Grupo(info.getId(), info.getNombre(), info.getDirector(),info.getLineaInvestigacion(),info.getCanIntegrantes(),info.getFechaConformacion(),info.getSemillero().getId(),info.getDepartamento().getId());
-        return grupoConverter.entityToModel(grupoService.setGrupo(tmp),semilleroConverter.entityToModel(semilleroServices.searchSemillero(tmp.getSemillero())),departamentoConverter.entityToModel(departamentoServices.getDepartamento(tmp.getDepartamento())));
+        Grupo tmp= new Grupo(info.getId(), info.getNombre(), info.getSigla(), info.getDirector(), info.getCanIntegrantes(), info.getFechaConformacion(), info.getSemillero(), info.getLineaInvestigacion(),info.getDepartamento().getId());
+        return grupoConverter.entityToModel(grupoService.setGrupo(tmp),departamentoConverter.entityToModel(departamentoServices.getDepartamento(tmp.getDepartamento())));
     }
 
     @GetMapping("/getGrupo/{id}")
     public GrupoModel getGrupo(@PathVariable int id){
         Grupo tmp=grupoService.getGrupo(id);
-       return grupoConverter.entityToModel(tmp,semilleroConverter.entityToModel(semilleroServices.searchSemillero(tmp.getSemillero())),departamentoConverter.entityToModel(departamentoServices.getDepartamento(tmp.getDepartamento())));
+       return grupoConverter.entityToModel(tmp,departamentoConverter.entityToModel(departamentoServices.getDepartamento(tmp.getDepartamento())));
     }
 
     @DeleteMapping("/delete/{id}")
@@ -71,8 +71,8 @@ public class GrupoController {
 
     @PutMapping("/update/{id}")
     public GrupoModel updateGrupo(@RequestBody GrupoModel info, @PathVariable int id){
-    Grupo tmp= new Grupo(info.getId(), info.getNombre(),info.getDirector(),info.getLineaInvestigacion(), info.getCanIntegrantes(), info.getFechaConformacion(),info.getSemillero().getId(),info.getDepartamento().getId());
-        return grupoConverter.entityToModel(grupoService.updateGrupo(grupoConverter.modelToEntity(info),id),semilleroConverter.entityToModel(semilleroServices.searchSemillero(tmp.getSemillero())),departamentoConverter.entityToModel(departamentoServices.getDepartamento(tmp.getId())));
+    Grupo tmp= grupoConverter.modelToEntity(info);
+        return grupoConverter.entityToModel(grupoService.updateGrupo(grupoConverter.modelToEntity(info),id),departamentoConverter.entityToModel(departamentoServices.getDepartamento(tmp.getId())));
     }
 
     @PostMapping("/masivo")

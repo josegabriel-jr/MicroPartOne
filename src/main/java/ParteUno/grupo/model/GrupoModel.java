@@ -2,34 +2,36 @@ package ParteUno.grupo.model;
 import ParteUno.departamento.model.DepartamentoModel;
 import ParteUno.semillero.model.SemilleroModel;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.sql.Date;
 
 public class GrupoModel {
+
     private int id;
-
     private String nombre;
-
+    private String sigla;
     private String director;
-
-    private String lineaInvestigacion;
-
     private int canIntegrantes;
-
     private Date fechaConformacion;
-
-    private SemilleroModel Semillero;
-
+    private int Semillero;
+    private String lineaInvestigacion;
     private DepartamentoModel Departamento;
 
     public GrupoModel() {
     }
 
-    public GrupoModel(int id, String nombre, int canIntegrantes, Date fechaConformacion, SemilleroModel semillero, DepartamentoModel departamento) {
+    public GrupoModel(int id, String nombre, String sigla, String director, int canIntegrantes, Date fechaConformacion, int semillero, String lineaInvestigacion, DepartamentoModel departamento) {
         this.id = id;
         this.nombre = nombre;
+        this.sigla = sigla;
+        this.director = director;
         this.canIntegrantes = canIntegrantes;
         this.fechaConformacion = fechaConformacion;
         Semillero = semillero;
+        this.lineaInvestigacion = lineaInvestigacion;
         Departamento = departamento;
     }
 
@@ -49,6 +51,22 @@ public class GrupoModel {
         this.nombre = nombre;
     }
 
+    public String getSigla() {
+        return sigla;
+    }
+
+    public void setSigla(String sigla) {
+        this.sigla = sigla;
+    }
+
+    public String getDirector() {
+        return director;
+    }
+
+    public void setDirector(String director) {
+        this.director = director;
+    }
+
     public int getCanIntegrantes() {
         return canIntegrantes;
     }
@@ -65,28 +83,12 @@ public class GrupoModel {
         this.fechaConformacion = fechaConformacion;
     }
 
-    public SemilleroModel getSemillero() {
+    public int getSemillero() {
         return Semillero;
     }
 
-    public void setSemillero(SemilleroModel semillero) {
+    public void setSemillero(int semillero) {
         Semillero = semillero;
-    }
-
-    public DepartamentoModel getDepartamento() {
-        return Departamento;
-    }
-
-    public void setDepartamento(DepartamentoModel departamento) {
-        Departamento = departamento;
-    }
-
-    public String getDirector() {
-        return director;
-    }
-
-    public void setDirector(String director) {
-        this.director = director;
     }
 
     public String getLineaInvestigacion() {
@@ -97,17 +99,11 @@ public class GrupoModel {
         this.lineaInvestigacion = lineaInvestigacion;
     }
 
-    @Override
-    public String toString() {
-        return "GrupoModel{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", director='" + director + '\'' +
-                ", lineaInvestigacion='" + lineaInvestigacion + '\'' +
-                ", canIntegrantes=" + canIntegrantes +
-                ", fechaConformacion=" + fechaConformacion +
-                ", Semillero=" + Semillero +
-                ", Departamento=" + Departamento +
-                '}';
+    public DepartamentoModel getDepartamento() {
+        return Departamento;
+    }
+
+    public void setDepartamento(DepartamentoModel departamento) {
+        Departamento = departamento;
     }
 }

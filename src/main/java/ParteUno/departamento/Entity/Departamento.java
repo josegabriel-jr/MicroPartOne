@@ -50,13 +50,4 @@ public class Departamento {
     public void setProgAcademico(int progAcademico) {
         this.progAcademico = progAcademico;
     }
-
-    @Override
-    public String toString() {
-        return "Departamento{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", progAcademico=" + progAcademico +
-                '}';
-    }
 }

@@ -14,11 +14,11 @@ public class Grupo {
     @Column(name = "nombre")
     private String nombre;
 
+    @Column(name = "sigla")
+    private String sigla;
+
     @Column(name = "director")
     private String director;
-
-    @Column(name = "lineainvestigacion")
-    private String lineaInvestigacion;
 
     @Column (name = "cantidad_integrantes")
     private int canIntegrantes;
@@ -26,8 +26,11 @@ public class Grupo {
     @Column (name = "fecha_conformacion")
     private Date fechaConformacion;
 
-    @Column(name = "id_semillero")
+    @Column(name = "semilleros")
     private int Semillero;
+
+    @Column(name = "lineasinvestigacion")
+    private String lineaInvestigacion;
 
     @Column(name = "id_departamento")
     private int Departamento;
@@ -35,15 +38,16 @@ public class Grupo {
     public Grupo() {
     }
 
-    public Grupo(int id, String nombre, String director, String lineaInvestigacion, int canIntegrantes, Date fechaConformacion, int semillero, int departamento) {
+    public Grupo(int id, String nombre, String sigla, String director, int canIntegrantes, Date fechaConformacion, int semillero, String lineaInvestigacion, int departamento) {
         this.id = id;
         this.nombre = nombre;
+        this.sigla = sigla;
         this.director = director;
-        this.lineaInvestigacion = lineaInvestigacion;
         this.canIntegrantes = canIntegrantes;
         this.fechaConformacion = fechaConformacion;
-        Semillero = semillero;
-        Departamento = departamento;
+        this.Semillero = semillero;
+        this.lineaInvestigacion = lineaInvestigacion;
+        this.Departamento = departamento;
     }
 
     public int getId() {
@@ -62,20 +66,20 @@ public class Grupo {
         this.nombre = nombre;
     }
 
+    public String getSigla() {
+        return sigla;
+    }
+
+    public void setSigla(String sigla) {
+        this.sigla = sigla;
+    }
+
     public String getDirector() {
         return director;
     }
 
     public void setDirector(String director) {
         this.director = director;
-    }
-
-    public String getLineaInvestigacion() {
-        return lineaInvestigacion;
-    }
-
-    public void setLineaInvestigacion(String lineaInvestigacion) {
-        this.lineaInvestigacion = lineaInvestigacion;
     }
 
     public int getCanIntegrantes() {
@@ -100,6 +104,14 @@ public class Grupo {
 
     public void setSemillero(int semillero) {
         Semillero = semillero;
+    }
+
+    public String getLineaInvestigacion() {
+        return lineaInvestigacion;
+    }
+
+    public void setLineaInvestigacion(String lineaInvestigacion) {
+        this.lineaInvestigacion = lineaInvestigacion;
     }
 
     public int getDepartamento() {
