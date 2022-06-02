@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/departamento")
@@ -52,9 +53,30 @@ public class DepartamentoController {
     return departamentoConverter.entityToModel(departamentoServices.updateDepartamento(departamentoConverter.modelToEntity(info),id));
     }
 
-    @PostMapping("/infos")
-    public Boolean guardarDatosD(@RequestBody DepartamentoModel []  info){
-        return departamentoServices.GuardarDatosS(info);
+    @PostMapping("/masivo")
+    public List<String> guardarDatosD(@PathVariable List<DepartamentoModel> info){
+        List<String> respuesta= new ArrayList<>();
+        try {
+            Departamento tmp= new Departamento();
+            for(DepartamentoModel sem : info) {
+                tmp= departamentoConverter.modelToEntity(sem);
+                if (departamentoServices.getDepartamento(tmp.getId())!=null){
+                String aux= tmp.getName();
+                respuesta.add(aux);
+                }else{
+                    departamentoServices.setDepartamento(tmp);
+                }
+            }
+
+            return respuesta;
+        }catch (Exception e){
+
+        }
+
+        return respuesta;
     }
+
+
+
 
 }

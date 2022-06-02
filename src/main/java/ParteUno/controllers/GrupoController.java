@@ -1,7 +1,9 @@
 package ParteUno.controllers;
 
+import ParteUno.departamento.Entity.Departamento;
 import ParteUno.departamento.Services.DepartamentoServices;
 import ParteUno.departamento.converter.DepartamentoConverter;
+import ParteUno.departamento.model.DepartamentoModel;
 import ParteUno.grupo.Entity.Grupo;
 import ParteUno.grupo.Services.GrupoService;
 import ParteUno.grupo.converter.GrupoConverter;
@@ -12,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/grupo")
@@ -72,9 +75,29 @@ public class GrupoController {
         return grupoConverter.entityToModel(grupoService.updateGrupo(grupoConverter.modelToEntity(info),id),semilleroConverter.entityToModel(semilleroServices.searchSemillero(tmp.getSemillero())),departamentoConverter.entityToModel(departamentoServices.getDepartamento(tmp.getId())));
     }
 
-    @PostMapping("/infos")
-    public Boolean GuardarInfoS(@RequestBody GrupoModel[] infos){
-    return grupoService.GuardarDatos(infos);
+    @PostMapping("/masivo")
+    public List<String> guardarDatosG(@PathVariable List<GrupoModel> info){
+        List<String> respuesta= new ArrayList<>();
+        try {
+            Grupo tmp= new Grupo();
+            for(GrupoModel sem : info) {
+                tmp= grupoConverter.modelToEntity(sem);
+                if (grupoService.getGrupo(tmp.getId())!=null){
+                    String aux= tmp.getNombre();
+                    respuesta.add(aux);
+                }else{
+                    grupoService.setGrupo(tmp);
+                }
+            }
+
+            return respuesta;
+        }catch (Exception e){
+
+        }
+
+        return respuesta;
     }
+
+
 
 }

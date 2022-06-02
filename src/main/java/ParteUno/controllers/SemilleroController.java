@@ -1,4 +1,6 @@
 package ParteUno.controllers;
+import ParteUno.grupo.Entity.Grupo;
+import ParteUno.grupo.model.GrupoModel;
 import ParteUno.semillero.Entity.Semillero;
 import ParteUno.semillero.converter.SemilleroConverter;
 import ParteUno.semillero.model.SemilleroModel;
@@ -52,17 +54,26 @@ public class SemilleroController {
     return semilleroConverter.entityToModel(semilleroServices.updateSemillero(semilleroConverter.modelToEntity(info),id));
     }
 
-/*
-    @PostMapping("/{infos}")
-    public ArrayList<String> GuardarDatosS(@PathVariable("infos") ArrayList<SemilleroModel> datos){
-        boolean isSave=false;
+    @PostMapping("/masivo")
+    public List<String> guardarDatosS(@PathVariable List<SemilleroModel> info){
+        List<String> respuesta= new ArrayList<>();
         try {
-            for(SemilleroModel tmp : datos) {
-                semilleroServices.setSemillero(semilleroConverter.modelToEntity(tmp));
+            Semillero tmp= new Semillero();
+            for(SemilleroModel sem : info) {
+                tmp= semilleroConverter.modelToEntity(sem);
+                if (semilleroServices.searchSemillero(tmp.getId())!=null){
+                    String aux= tmp.getNombre();
+                    respuesta.add(aux);
+                }else{
+                    semilleroServices.setSemillero(tmp);
+                }
             }
-            isSave=true;
-        }catch (Exception e){}
-        return isSave;
+
+            return respuesta;
+        }catch (Exception e){
+
+        }
+
+        return respuesta;
     }
-*/
 }
