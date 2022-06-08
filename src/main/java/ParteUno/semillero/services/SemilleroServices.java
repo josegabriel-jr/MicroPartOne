@@ -52,6 +52,7 @@ public class SemilleroServices {
         semillero.setCanGrupos(info.getCanGrupos());
         semillero.setCantidad_estudiantes(info.getCantidad_estudiantes());
         semillero.setFechaConformacion(info.getFechaConformacion());
+        semillero.setProgramaAcademico(info.getProgramaAcademico());
         return semilleroRepositories.save(semillero);
     }
 

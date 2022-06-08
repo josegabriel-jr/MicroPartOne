@@ -10,17 +10,20 @@ public class SemilleroModel {
     private int canGrupos;
     private int canEstudiantes;
     private Date fechaConformacion;
-
+    private int programaAcademico;
 
     public SemilleroModel() {
 
     }
 
-    public SemilleroModel(int id, String nombre, int canGrupos, Date fechaConformacion) {
+    public SemilleroModel(int id, String sigla, String nombre, int canGrupos, int canEstudiantes, Date fechaConformacion, int programaAcademico) {
         this.id = id;
+        this.sigla = sigla;
         this.nombre = nombre;
         this.canGrupos = canGrupos;
+        this.canEstudiantes = canEstudiantes;
         this.fechaConformacion = fechaConformacion;
+        this.programaAcademico = programaAcademico;
     }
 
     public String getSigla() {
@@ -71,6 +74,10 @@ public class SemilleroModel {
         this.fechaConformacion = fechaConformacion;
     }
 
+    public int getProgramaAcademico() {
+        return programaAcademico;
+    }
+
     @Override
     public String toString() {
         return "SemilleroModel{" +
@@ -80,6 +87,12 @@ public class SemilleroModel {
                 ", canGrupos=" + canGrupos +
                 ", canEstudiantes=" + canEstudiantes +
                 ", fechaConformacion=" + fechaConformacion +
+                ", programaAcademico=" + programaAcademico +
                 '}';
     }
+
+    public void setProgramaAcademico(int programaAcademico) {
+        this.programaAcademico = programaAcademico;
+    }
+
 }

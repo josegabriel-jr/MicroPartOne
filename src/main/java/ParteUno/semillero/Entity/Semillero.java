@@ -26,16 +26,20 @@ public class Semillero {
     @Column (name = "fecha_conformacion")
     private Date fechaConformacion;
 
+    @Column (name = "programa_academico")
+    private int programaAcademico;
+
     public Semillero() {
     }
 
-    public Semillero(int id, String sigla, String nombre, int canGrupos, int cantidad_estudiantes, Date fechaConformacion) {
+    public Semillero(int id, String sigla, String nombre, int canGrupos, int cantidad_estudiantes, Date fechaConformacion, int programaAcademico) {
         this.id = id;
         this.sigla = sigla;
         this.nombre = nombre;
         this.canGrupos = canGrupos;
         this.cantidad_estudiantes = cantidad_estudiantes;
         this.fechaConformacion = fechaConformacion;
+        this.programaAcademico = programaAcademico;
     }
 
     public int getId() {
@@ -84,5 +88,26 @@ public class Semillero {
 
     public void setFechaConformacion(Date fechaConformacion) {
         this.fechaConformacion = fechaConformacion;
+    }
+
+    public int getProgramaAcademico() {
+        return programaAcademico;
+    }
+
+    public void setProgramaAcademico(int programaAcademico) {
+        this.programaAcademico = programaAcademico;
+    }
+
+    @Override
+    public String toString() {
+        return "Semillero{" +
+                "id=" + id +
+                ", sigla='" + sigla + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", canGrupos=" + canGrupos +
+                ", cantidad_estudiantes=" + cantidad_estudiantes +
+                ", fechaConformacion=" + fechaConformacion +
+                ", programaAcademico=" + programaAcademico +
+                '}';
     }
 }
