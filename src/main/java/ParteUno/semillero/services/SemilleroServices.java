@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -54,12 +55,12 @@ public class SemilleroServices {
         return semilleroRepositories.save(semillero);
     }
 
-    public Boolean GuardarDatosS(SemilleroModel[] info){
+    public Boolean GuardarDatosS(List<SemilleroModel> info){
         boolean isSave=false;
         try {
             Semillero tmp= new Semillero();
-            for (int i = 0; i < info.length; i++) {
-                tmp= semilleroConverter.modelToEntity(info[i]);
+            for(SemilleroModel sem : info) {
+                tmp= semilleroConverter.modelToEntity(sem);
                 semilleroRepositories.save(tmp);
             }
             isSave=true;

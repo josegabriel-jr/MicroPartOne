@@ -55,19 +55,26 @@ public class SemilleroController {
     }
 
     @PostMapping("/masivo")
-    public List<String> guardarDatosS(@PathVariable List<SemilleroModel> info){
+    public List<String> guardarDatosS(@RequestBody List<SemilleroModel> info){
         List<String> respuesta= new ArrayList<>();
         try {
-            Semillero tmp= new Semillero();
+            System.out.println(info.size());
             for(SemilleroModel sem : info) {
-                tmp= semilleroConverter.modelToEntity(sem);
+            	System.out.println(sem.toString());
+            	Semillero tmp= semilleroConverter.modelToEntity(sem);
                 if (semilleroServices.searchSemillero(tmp.getId())!=null){
+                	respuesta.add("No agregado");
+
+                    System.out.println("-------------------------------1");
+                }else{
+
+                    System.out.println("-------------------------------2");
+                	semilleroServices.setSemillero(tmp);
                     String aux= tmp.getNombre();
                     respuesta.add(aux);
-                }else{
-                    semilleroServices.setSemillero(tmp);
                 }
             }
+
 
             return respuesta;
         }catch (Exception e){

@@ -38,4 +38,11 @@ public class DepartamentoModel {
     public void setProgAcademico(int progAcademico) {
         this.progAcademico = progAcademico;
     }
+
+	@Override
+	public String toString() {
+		return "DepartamentoModel [id=" + id + ", name=" + name + ", progAcademico=" + progAcademico + "]";
+	}
+    
+    
 }

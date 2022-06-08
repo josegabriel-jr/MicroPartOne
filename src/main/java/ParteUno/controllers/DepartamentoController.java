@@ -54,11 +54,12 @@ public class DepartamentoController {
     }
 
     @PostMapping("/masivo")
-    public List<String> guardarDatosD(@PathVariable List<DepartamentoModel> info){
+    public List<String> guardarDatosD(@RequestBody List<DepartamentoModel> info){
         List<String> respuesta= new ArrayList<>();
         try {
             Departamento tmp= new Departamento();
             for(DepartamentoModel sem : info) {
+            	
                 tmp= departamentoConverter.modelToEntity(sem);
                 if (departamentoServices.getDepartamento(tmp.getId())!=null){
                 String aux= tmp.getName();

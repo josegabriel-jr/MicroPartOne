@@ -76,7 +76,7 @@ public class GrupoController {
     }
 
     @PostMapping("/masivo")
-    public List<String> guardarDatosG(@PathVariable List<GrupoModel> info){
+    public List<String> guardarDatosG(@RequestBody List<GrupoModel> info){
         List<String> respuesta= new ArrayList<>();
         try {
             Grupo tmp= new Grupo();

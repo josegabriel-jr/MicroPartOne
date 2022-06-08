@@ -45,6 +45,7 @@ public class DepartamentoServices {
     public Departamento updateDepartamento(Departamento info, int id){
         Departamento departamento= departamentoRepositories.findById(id).get();
         departamento.setName(info.getName());
+        departamento.setProgAcademico(info.getProgAcademico());
         return departamentoRepositories.save(departamento);
     }
 
