@@ -40,17 +40,26 @@ public class GrupoService {
         return isDelete;
     }
 
-    public Grupo updateGrupo(Grupo info, int id){
-        Grupo grupo = grupoRepository.findById(id).get();
-        grupo.setNombre(info.getNombre());
-        grupo.setSigla(info.getSigla());
-        grupo.setDirector(info.getDirector());
-        grupo.setCanIntegrantes(info.getCanIntegrantes());
-        grupo.setFechaConformacion(info.getFechaConformacion());
-        grupo.setSemillero(info.getSemillero());
-        grupo.setLineaInvestigacion(info.getLineaInvestigacion());
-        grupo.setDepartamento(info.getDepartamento());
-        return grupoRepository.save(grupo);
+    public Boolean updateGrupo(GrupoModel info, Long nuevaId){
+    	boolean resultado=false;
+     
+
+		try {
+			System.out.print(".............---------------------------" + info.toString());
+
+			if (grupoRepository.updateGrupoSetStatusForNameNative(info.getId(),
+					info.getNombre(),info.getSigla(),info.getDirector(),info.getCanIntegrantes(),
+					info.getFechaConformacion(),info.getSemillero(),info.getLineaInvestigacion(),
+					info.getDpto(),nuevaId) != 0) {
+				resultado = true;
+			}
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
+		return resultado;
+	
     }
 
 

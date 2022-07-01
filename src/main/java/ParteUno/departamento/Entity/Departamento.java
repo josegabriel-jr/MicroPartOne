@@ -50,4 +50,6 @@ public class Departamento {
     public void setProgAcademico(int progAcademico) {
         this.progAcademico = progAcademico;
     }
+    
+    
 }

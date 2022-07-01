@@ -48,9 +48,9 @@ public class DepartamentoController {
         return departamentoServices.deleteDepartamento(id);
     }
 
-    @PutMapping("/update/{id}")
-    public DepartamentoModel updateDepartamento(@RequestBody DepartamentoModel info, @PathVariable int id){
-    return departamentoConverter.entityToModel(departamentoServices.updateDepartamento(departamentoConverter.modelToEntity(info),id));
+    @PostMapping("/update/{id}")
+    public Boolean updateDepartamento(@RequestBody DepartamentoModel info, @PathVariable Long id){
+    return departamentoServices.updateDepartamento(info,id);
     }
 
     @PostMapping("/masivo")

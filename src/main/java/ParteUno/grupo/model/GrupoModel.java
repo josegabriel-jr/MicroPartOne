@@ -19,6 +19,7 @@ public class GrupoModel {
     private int Semillero;
     private String lineaInvestigacion;
     private DepartamentoModel Departamento;
+    private int dpto;
 
     public GrupoModel() {
     }
@@ -106,4 +107,22 @@ public class GrupoModel {
     public void setDepartamento(DepartamentoModel departamento) {
         Departamento = departamento;
     }
+
+	public int getDpto() {
+		return dpto;
+	}
+
+	public void setDpto(int dpto) {
+		this.dpto = dpto;
+	}
+
+	@Override
+	public String toString() {
+		return "GrupoModel [id=" + id + ", nombre=" + nombre + ", sigla=" + sigla + ", director=" + director
+				+ ", canIntegrantes=" + canIntegrantes + ", fechaConformacion=" + fechaConformacion + ", Semillero="
+				+ Semillero + ", lineaInvestigacion=" + lineaInvestigacion + ", Departamento=" + Departamento
+				+ ", dpto=" + dpto + "]";
+	}
+    
+	
 }

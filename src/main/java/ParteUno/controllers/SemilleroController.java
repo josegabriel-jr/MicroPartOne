@@ -49,9 +49,9 @@ public class SemilleroController {
     }
 
 
-    @PutMapping("/update/{id}")
-    public SemilleroModel updateSemillero(@RequestBody SemilleroModel info,@PathVariable int id){
-    return semilleroConverter.entityToModel(semilleroServices.updateSemillero(semilleroConverter.modelToEntity(info),id));
+    @PostMapping("/update/{id}")
+    public Boolean updateSemillero(@RequestBody SemilleroModel info,@PathVariable Long id){
+    return semilleroServices.updateSemillero(info,id);
     }
 
     @PostMapping("/masivo")

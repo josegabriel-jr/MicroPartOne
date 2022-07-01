@@ -69,10 +69,10 @@ public class GrupoController {
         return grupoService.deleteGrupo(id);
     }
 
-    @PutMapping("/update/{id}")
-    public GrupoModel updateGrupo(@RequestBody GrupoModel info, @PathVariable int id){
-    Grupo tmp= grupoConverter.modelToEntity(info);
-        return grupoConverter.entityToModel(grupoService.updateGrupo(grupoConverter.modelToEntity(info),id),departamentoConverter.entityToModel(departamentoServices.getDepartamento(tmp.getId())));
+    @PostMapping("/update/{id}")
+    public Boolean updateGrupo(@RequestBody GrupoModel info, @PathVariable Long id){
+  
+        return grupoService.updateGrupo(info,id);
     }
 
     @PostMapping("/masivo")

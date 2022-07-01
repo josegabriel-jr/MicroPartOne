@@ -13,7 +13,6 @@ public class SemilleroConverter {
             semilleroModel.setId(info.getId());
             semilleroModel.setSigla(info.getSigla());
             semilleroModel.setNombre(info.getNombre());
-            semilleroModel.setCanGrupos(info.getCanGrupos());
             semilleroModel.setCanEstudiantes(info.getCantidad_estudiantes());
             semilleroModel.setFechaConformacion(info.getFechaConformacion());
             semilleroModel.setProgramaAcademico(info.getProgramaAcademico());
@@ -27,7 +26,6 @@ public class SemilleroConverter {
             semillero.setId(info.getId());
             semillero.setSigla(info.getSigla());
             semillero.setNombre(info.getNombre());
-            semillero.setCanGrupos(info.getCanGrupos());
             semillero.setCantidad_estudiantes(info.getCanEstudiantes());
             semillero.setFechaConformacion(info.getFechaConformacion());
             semillero.setProgramaAcademico(info.getProgramaAcademico());

@@ -7,7 +7,6 @@ public class SemilleroModel {
     private int id;
     private String sigla;
     private String nombre;
-    private int canGrupos;
     private int canEstudiantes;
     private Date fechaConformacion;
     private int programaAcademico;
@@ -16,11 +15,10 @@ public class SemilleroModel {
 
     }
 
-    public SemilleroModel(int id, String sigla, String nombre, int canGrupos, int canEstudiantes, Date fechaConformacion, int programaAcademico) {
+    public SemilleroModel(int id, String sigla, String nombre,  int canEstudiantes, Date fechaConformacion, int programaAcademico) {
         this.id = id;
         this.sigla = sigla;
         this.nombre = nombre;
-        this.canGrupos = canGrupos;
         this.canEstudiantes = canEstudiantes;
         this.fechaConformacion = fechaConformacion;
         this.programaAcademico = programaAcademico;
@@ -58,13 +56,7 @@ public class SemilleroModel {
         this.nombre = nombre;
     }
 
-    public int getCanGrupos() {
-        return canGrupos;
-    }
-
-    public void setCanGrupos(int canGrupos) {
-        this.canGrupos = canGrupos;
-    }
+   
 
     public Date getFechaConformacion() {
         return fechaConformacion;
@@ -84,7 +76,6 @@ public class SemilleroModel {
                 "id=" + id +
                 ", sigla='" + sigla + '\'' +
                 ", nombre='" + nombre + '\'' +
-                ", canGrupos=" + canGrupos +
                 ", canEstudiantes=" + canEstudiantes +
                 ", fechaConformacion=" + fechaConformacion +
                 ", programaAcademico=" + programaAcademico +

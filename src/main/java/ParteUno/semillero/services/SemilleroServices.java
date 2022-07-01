@@ -15,59 +15,63 @@ import java.util.Optional;
 
 @Service
 public class SemilleroServices {
-    @Autowired
-    SemilleroRepositories semilleroRepositories;
-    @Autowired
-    SemilleroConverter semilleroConverter;
+	@Autowired
+	SemilleroRepositories semilleroRepositories;
+	@Autowired
+	SemilleroConverter semilleroConverter;
 
-    public ArrayList<Semillero> listSemillero() {
-        return (ArrayList<Semillero>) semilleroRepositories.findAll();
+	public ArrayList<Semillero> listSemillero() {
+		return (ArrayList<Semillero>) semilleroRepositories.findAll();
+	}
+
+	public Semillero setSemillero(Semillero info) {
+		return semilleroRepositories.save(info);
+	}
+
+	public Boolean deleteSemillero(Integer id) {
+		boolean isDelete = false;
+		try {
+			semilleroRepositories.deleteById(id);
+			isDelete = true;
+		} catch (Exception e) {
+
+		}
+		return isDelete;
+	}
+
+	public Semillero searchSemillero(int id) {
+		return semilleroRepositories.findById(id).get();
+	}
+
+	public Boolean updateSemillero(SemilleroModel info, Long idNueva){
+
+		Boolean resultado = false;
+		try {
+			System.out.print(".............---------------------------" + info.toString());
+
+			if ( semilleroRepositories.updateSemilleroSetStatusForNameNative(info.getId(), info.getNombre(),
+					info.getSigla(),info.getCanEstudiantes(),info.getFechaConformacion(),info.getProgramaAcademico(), idNueva) != 0) {
+				resultado = true;
+			}
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return resultado;
     }
 
-
-    public Semillero setSemillero(Semillero info) {
-        return semilleroRepositories.save(info);
-    }
-
-    public Boolean deleteSemillero(Integer id) {
-        boolean isDelete = false;
-        try {
-            semilleroRepositories.deleteById(id);
-            isDelete = true;
-        } catch (Exception e) {
-
-        }
-        return isDelete;
-    }
-
-
-    public Semillero searchSemillero(int id) {
-        return semilleroRepositories.findById(id).get();
-    }
-
-    public Semillero updateSemillero(Semillero info, int id){
-        Semillero semillero = semilleroRepositories.findById(id).get();
-        semillero.setSigla(info.getSigla());
-        semillero.setNombre(info.getNombre());
-        semillero.setCanGrupos(info.getCanGrupos());
-        semillero.setCantidad_estudiantes(info.getCantidad_estudiantes());
-        semillero.setFechaConformacion(info.getFechaConformacion());
-        semillero.setProgramaAcademico(info.getProgramaAcademico());
-        return semilleroRepositories.save(semillero);
-    }
-
-    public Boolean GuardarDatosS(List<SemilleroModel> info){
-        boolean isSave=false;
-        try {
-            Semillero tmp= new Semillero();
-            for(SemilleroModel sem : info) {
-                tmp= semilleroConverter.modelToEntity(sem);
-                semilleroRepositories.save(tmp);
-            }
-            isSave=true;
-        }catch (Exception e){}
-        return isSave;
-    }
-
+	public Boolean GuardarDatosS(List<SemilleroModel> info) {
+		boolean isSave = false;
+		try {
+			Semillero tmp = new Semillero();
+			for (SemilleroModel sem : info) {
+				tmp = semilleroConverter.modelToEntity(sem);
+				semilleroRepositories.save(tmp);
+			}
+			isSave = true;
+		} catch (Exception e) {
+		}
+		return isSave;
+	}
 
 }
