@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/semillero")
+@RequestMapping("/api/semillero")
 public class SemilleroController {
 
     @Autowired

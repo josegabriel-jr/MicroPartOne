@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/departamento")
+@RequestMapping("/api/departamento")
 public class DepartamentoController {
     @Autowired
     DepartamentoServices departamentoServices;
@@ -48,8 +48,11 @@ public class DepartamentoController {
         return departamentoServices.deleteDepartamento(id);
     }
 
-    @PostMapping("/update/{id}")
-    public Boolean updateDepartamento(@RequestBody DepartamentoModel info, @PathVariable Long id){
+    @PostMapping("/update/{id}" )
+    public Boolean updateDepartamento(@RequestBody DepartamentoModel info){
+    	
+    	System.out.println(info.toString());
+    Long id = Long.parseLong(info.getId()+"");
     return departamentoServices.updateDepartamento(info,id);
     }
 

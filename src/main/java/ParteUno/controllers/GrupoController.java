@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/grupo")
+@RequestMapping("/api/grupo")
 public class GrupoController {
 
     @Autowired
